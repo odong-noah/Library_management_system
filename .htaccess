@@ -1,0 +1,27 @@
+Options -Indexes
+DirectoryIndex index.php login.php
+
+# Block old unprotected HTML entry point
+<Files "index.html">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+# Security headers (only if mod_headers is enabled)
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# PHP settings (only works if mod_php is active, not with FastCGI)
+<IfModule mod_php.c>
+  php_flag session.cookie_httponly On
+  php_flag session.use_strict_mode On
+  php_value session.cookie_lifetime 0
+</IfModule>
+<IfModule mod_php8.c>
+  php_flag session.cookie_httponly On
+  php_flag session.use_strict_mode On
+  php_value session.cookie_lifetime 0
+</IfModule>
