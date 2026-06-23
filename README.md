@@ -7,15 +7,19 @@ Full-stack Library Management System — PHP + MySQL + Vanilla JS + Bootstrap 5
 
 ## Default Login Credentials
 
-| Username    | Password    | Role          |
-|-------------|-------------|---------------|
-| `librarian` | `password`  | Librarian     |
+| Username    | Password         | Role      |
+| ----------- | ---------------- | --------- |
+| `librarian` | `@Hannahlib2026` | Librarian |
 
 > **Important:** Change passwords immediately after first login via phpMyAdmin or MySQL CLI:
+>
 > ```sql
+>
+> ```
 
 > ```
 > Generate hash with: `php -r "echo password_hash('NewPassword', PASSWORD_BCRYPT);"`
+> ```
 
 ---
 
@@ -31,13 +35,17 @@ Full-stack Library Management System — PHP + MySQL + Vanilla JS + Bootstrap 5
 ## Installation
 
 ### 1. Import Database
+
 ```bash
 mysql -u root -p < database.sql
 ```
+
 Or via phpMyAdmin → Import → select `database.sql`
 
 ### 2. Configure Database
+
 Edit `includes/config.php`:
+
 ```php
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');      // your MySQL username
@@ -46,13 +54,17 @@ define('DB_NAME', 'hannah_library');
 ```
 
 ### 3. Deploy Files
+
 Copy the entire `library-system/` folder to:
+
 - **XAMPP:** `C:/xampp/htdocs/library-system/`
-- **WAMP:**  `C:/wamp64/www/library-system/`
+- **WAMP:** `C:/wamp64/www/library-system/`
 - **Linux:** `/var/www/html/library-system/`
 
 ### 4. Access the System
+
 Open your browser:
+
 ```
 http://localhost/library-system/login.php
 ```
@@ -120,4 +132,3 @@ library-system/
 - `.htaccess` blocks direct access to `includes/` directory
 - All API endpoints require valid session
 - `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff` headers
-
