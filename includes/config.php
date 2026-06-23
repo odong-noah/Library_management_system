@@ -12,20 +12,25 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // --- Dynamic Base Path Detection ---
-// Works whether deployed at http://localhost/ or http://localhost/library-system/
-define('APP_ROOT',   dirname(__DIR__));                          // absolute filesystem root of the app
-define('APP_BASE',   rtrim(dirname(dirname($_SERVER['SCRIPT_NAME'] ?? '')), '/\\'));  // URL base path
+// This detects the folder "library-system" correctly
+$currentScript = $_SERVER['SCRIPT_NAME'] ?? '';
+$currentDir = dirname($currentScript);
+
+// If we are inside the 'api' or 'includes' subfolder, go up one level
+if (basename($currentDir) == 'api' || basename($currentDir) == 'includes') {
+    $currentDir = dirname($currentDir);
+}
+
+define('APP_BASE', rtrim(str_replace('\\', '/', $currentDir), '/'));
 
 // Helper: build a URL relative to the app root
 function appUrl($path) {
-    $base = rtrim(str_replace('\\','/', dirname(dirname($_SERVER['PHP_SELF'] ?? ''))), '/');
-    return $base . '/' . ltrim($path, '/');
+    return APP_BASE . '/' . ltrim($path, '/');
 }
 
-// Login page redirect (works at any depth)
+// Login page redirect (Corrected)
 function loginUrl($extra = '') {
-    $base = rtrim(str_replace('\\','/', dirname(dirname($_SERVER['PHP_SELF'] ?? ''))), '/');
-    return $base . '/login.php' . $extra;
+    return APP_BASE . '/login.php' . $extra;
 }
 
 // --- Database ---

@@ -140,7 +140,7 @@ const API_AUTH  = BASE_PATH + '/api/auth.php';
 let failCount = 0;
 const MAX_ATTEMPTS = 5;
 
-// ─── FIX 1: clear fields on every page load ──────────────────────────────────
+// ─── FIX 1: clear fields on every page load ───────────────────────────────
 window.addEventListener('load', function () {
   clearFields();
   document.getElementById('username').focus();

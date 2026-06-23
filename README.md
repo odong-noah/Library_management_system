@@ -9,12 +9,11 @@ Full-stack Library Management System — PHP + MySQL + Vanilla JS + Bootstrap 5
 
 | Username    | Password    | Role          |
 |-------------|-------------|---------------|
-| `admin`     | `Admin@2024`| Administrator |
 | `librarian` | `password`  | Librarian     |
 
 > **Important:** Change passwords immediately after first login via phpMyAdmin or MySQL CLI:
 > ```sql
-> UPDATE librarians SET password = '$2y$10$HASH' WHERE username = 'admin';
+
 > ```
 > Generate hash with: `php -r "echo password_hash('NewPassword', PASSWORD_BCRYPT);"`
 
