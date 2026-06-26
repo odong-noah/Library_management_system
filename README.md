@@ -7,9 +7,12 @@ Full-stack Library Management System — PHP + MySQL + Vanilla JS + Bootstrap 5
 
 ## Default Login Credentials
 
-| Username    | Password         | Role      |
-| ----------- | ---------------- | --------- |
-| `librarian` | `@Hannahlib2026` | Librarian |
+| Username    | Password         | Role          |
+| ----------- | ---------------- | ------------- |
+| `librarian` | `@Hannahlib2026` | Librarian     |
+| `admin`     | `@Hannah2026`    | Administrator |
+
+** Note** The admin and the librarian have the same previlleges and the interfaces are the same (In brief the administrator of this system is the librarian)
 
 > **Important:** Change passwords immediately after first login via phpMyAdmin or MySQL CLI:
 >
